@@ -1,0 +1,80 @@
+
+
+
+#Football
+def qb(completions,attempts,passing_yards,touchdown_passes,interceptions):
+    completions = float (completions)
+    attempts = float(attempts)
+    passing_yards = float(passing_yards)
+    touchdown_passes = float(touchdown_passes)
+    interceptions=float(interceptions)
+    qb = 100*(5*(completions/attempts-.3)+.25*(passing_yards/attempts-3) + 20*(touchdown_passes/attempts)+2.375-(25*interceptions/attempts))/6
+    return qb
+#Quidditch
+def q(quaffles,quaffles2,y,x):
+    quaffles = float(quaffles)
+    quaffles2 = float(quaffles2)
+    y=float(y)
+    x=float(x)
+    q = 10*quaffles+y,10*quaffles2+x
+    return q
+#Gymnasts
+def g(S1,S2,S3,S4,S5,Difficulty):
+    S1 = float(S1)
+    S2=float(S2)
+    S3=float(S3)
+    S4=float(S4)
+    S5=float(S5)
+    Difficulty=float(Difficulty)
+    g = (S1+S2+S3+S4+S5)/5 + Difficulty
+    return g
+
+def which_sport():
+    Sport = input("Which Sport do you want stats for?:")
+    Sport = Sport.strip().lower()
+    if Sport == "football":
+        completions = input("Please input the amount of completions")
+        attempts = input("Please input the amount of attempts")
+        passing_yards = input("Please input the amount of passing yards")
+        touchdown_passes = input("Please input the amount of touchdown passes:")
+        interceptions = input("Please input the amount of interceptions:")
+        if completions == attempts:
+            print("You are a perfect passer")
+        if completions>attempts:
+            print("Invalid Stats")
+        Final_stat = qb(completions, attempts, passing_yards, touchdown_passes, interceptions)
+        return Final_stat
+    elif Sport == "quidditch":
+        quaffles = input("How many Quaffles were scored for team 1?")
+        quaffles2 = input("How many Quaffles for team 2?")
+        Snitch = input("Was the snitch caught by team one?")
+        Snitch = Snitch.strip().lower()
+        if Snitch == "yes":
+             y= 30
+             x=0
+             Final_stat = q(quaffles,quaffles2,y,x)
+             return Final_stat
+        else:
+            y=0
+            x=30
+            Final_stat = q(quaffles,quaffles2,y,x)
+            return Final_stat
+    elif Sport == "gymnast":
+        S1 = input("What was execution score one?")
+        S2 = input("What was execution score two?")
+        S3 = input("What was execution score three?")
+        S4 = input("What was execution score four")
+        S5 = input("What was execution score five?")
+        Difficulty = input("What was the difficulty score?")
+        Final_stat = g(S1,S2,S3,S4,S5,Difficulty)
+        return Final_stat
+    else:
+        print("Sorry, Invalid Sport for Stats")
+
+
+def main():
+    Stats = which_sport()
+    print("Stats are:", Stats)
+
+main()
+
